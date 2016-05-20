@@ -1,0 +1,21 @@
+version: "2"
+services: 
+   db:
+      image: trial6
+      volumes_from:
+         - dbdata:/data/mysql
+         - dblogs:/logs/mysql
+      ports:
+         - "33306:3306"
+   dbdata:
+      image: centos:centos7
+      entrypoint: /bin/true
+      volumes: 
+         - /root/docker/dbmaintain2/data/mysql
+
+   dblogs: 
+      image: centos:centos7
+      entrypoint: /bin/true
+      volumes:
+         - /root/docker/dbmaintain2/logs/mysql
+
